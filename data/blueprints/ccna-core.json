@@ -1,0 +1,378 @@
+[
+  {
+    "id": "ccna-core-nf-01",
+    "trackId": "ccna-core",
+    "domain": "Network Fundamentals",
+    "subdomain": "Network Components",
+    "title": "Explain the role and function of network components (router, switch, AP, firewall)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-nf-02",
+    "trackId": "ccna-core",
+    "domain": "Network Fundamentals",
+    "subdomain": "Topologies",
+    "title": "Describe characteristics of network topology architectures (2-tier, 3-tier, spine-leaf, WAN, SOHO)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-nf-03",
+    "trackId": "ccna-core",
+    "domain": "Network Fundamentals",
+    "subdomain": "Physical Layer",
+    "title": "Compare physical interface and cabling types (copper, fiber, Ethernet standards)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-nf-04",
+    "trackId": "ccna-core",
+    "domain": "Network Fundamentals",
+    "subdomain": "Troubleshooting",
+    "title": "Identify interface and cable issues (collisions, errors, mismatch duplex)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-nf-05",
+    "trackId": "ccna-core",
+    "domain": "Network Fundamentals",
+    "subdomain": "TCP/IP",
+    "title": "Compare TCP to UDP and describe IPv4/IPv6 header fields",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-nf-06",
+    "trackId": "ccna-core",
+    "domain": "Network Fundamentals",
+    "subdomain": "IPv4 Addressing",
+    "title": "Configure and verify IPv4 addressing and subnetting (VLSM, CIDR)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-nf-07",
+    "trackId": "ccna-core",
+    "domain": "Network Fundamentals",
+    "subdomain": "Private Addressing",
+    "title": "Describe the need for private IPv4 addressing and NAT concepts",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-nf-08",
+    "trackId": "ccna-core",
+    "domain": "Network Fundamentals",
+    "subdomain": "IPv6 Addressing",
+    "title": "Configure and verify IPv6 addressing and prefix notation",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-na-01",
+    "trackId": "ccna-core",
+    "domain": "Network Access",
+    "subdomain": "VLANs",
+    "title": "Configure and verify VLANs spanning multiple switches",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-na-02",
+    "trackId": "ccna-core",
+    "domain": "Network Access",
+    "subdomain": "Trunking",
+    "title": "Configure and verify interswitch connectivity (802.1Q trunking)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-na-03",
+    "trackId": "ccna-core",
+    "domain": "Network Access",
+    "subdomain": "Discovery",
+    "title": "Configure and verify Layer 2 discovery protocols (CDP, LLDP)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-na-04",
+    "trackId": "ccna-core",
+    "domain": "Network Access",
+    "subdomain": "EtherChannel",
+    "title": "Configure and verify EtherChannel (LACP)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-na-05",
+    "trackId": "ccna-core",
+    "domain": "Network Access",
+    "subdomain": "STP",
+    "title": "Describe STP/RSTP root port, designated port, and blocking roles",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-na-06",
+    "trackId": "ccna-core",
+    "domain": "Network Access",
+    "subdomain": "Wireless",
+    "title": "Compare Cisco Wireless architectures (autonomous, unified, FlexConnect, SD-Access)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-na-07",
+    "trackId": "ccna-core",
+    "domain": "Network Access",
+    "subdomain": "WLAN Infrastructure",
+    "title": "Describe physical infrastructure connections of WLAN components (AP, WLC, PoE)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-na-08",
+    "trackId": "ccna-core",
+    "domain": "Network Access",
+    "subdomain": "WLAN Configuration",
+    "title": "Identify WLAN configuration on WLC and access points (SSID, security)",
+    "weight": 20
+  },
+  {
+    "id": "ccna-core-ip-01",
+    "trackId": "ccna-core",
+    "domain": "IP Connectivity",
+    "subdomain": "Routing Tables",
+    "title": "Interpret the components of a routing table (prefix, network mask, next-hop, AD, metric)",
+    "weight": 25
+  },
+  {
+    "id": "ccna-core-ip-02",
+    "trackId": "ccna-core",
+    "domain": "IP Connectivity",
+    "subdomain": "Forwarding",
+    "title": "Determine how a router makes a forwarding decision by default",
+    "weight": 25
+  },
+  {
+    "id": "ccna-core-ip-03",
+    "trackId": "ccna-core",
+    "domain": "IP Connectivity",
+    "subdomain": "Static Routing",
+    "title": "Configure and verify IPv4 and IPv6 static routing",
+    "weight": 25
+  },
+  {
+    "id": "ccna-core-ip-04",
+    "trackId": "ccna-core",
+    "domain": "IP Connectivity",
+    "subdomain": "OSPF",
+    "title": "Configure and verify single area OSPFv2",
+    "weight": 25
+  },
+  {
+    "id": "ccna-core-ip-05",
+    "trackId": "ccna-core",
+    "domain": "IP Connectivity",
+    "subdomain": "OSPF Concepts",
+    "title": "Describe OSPF metric, neighbor adjacencies, and DR/BDR election",
+    "weight": 25
+  },
+  {
+    "id": "ccna-core-ip-06",
+    "trackId": "ccna-core",
+    "domain": "IP Connectivity",
+    "subdomain": "PBR",
+    "title": "Configure and verify policy-based routing",
+    "weight": 25
+  },
+  {
+    "id": "ccna-core-ip-07",
+    "trackId": "ccna-core",
+    "domain": "IP Connectivity",
+    "subdomain": "FHRP",
+    "title": "Configure and verify first hop redundancy protocols (HSRP, VRRP, GLBP)",
+    "weight": 25
+  },
+  {
+    "id": "ccna-core-ip-08",
+    "trackId": "ccna-core",
+    "domain": "IP Connectivity",
+    "subdomain": "IPv6 Routing",
+    "title": "Configure and verify IPv6 global unicast and unique local addresses",
+    "weight": 25
+  },
+  {
+    "id": "ccna-core-is-01",
+    "trackId": "ccna-core",
+    "domain": "IP Services",
+    "subdomain": "NAT",
+    "title": "Configure and verify NAT using static and pools",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-is-02",
+    "trackId": "ccna-core",
+    "domain": "IP Services",
+    "subdomain": "NTP",
+    "title": "Configure NTP operating in client and server mode",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-is-03",
+    "trackId": "ccna-core",
+    "domain": "IP Services",
+    "subdomain": "Network Services",
+    "title": "Explain the function of DHCP, DNS, SNMP, and syslog in network operations",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-is-04",
+    "trackId": "ccna-core",
+    "domain": "IP Services",
+    "subdomain": "DHCP",
+    "title": "Configure and verify DHCP client and relay on a router",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-is-05",
+    "trackId": "ccna-core",
+    "domain": "IP Services",
+    "subdomain": "QoS",
+    "title": "Explain QoS concepts and the need for QoS in converged networks",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-is-06",
+    "trackId": "ccna-core",
+    "domain": "IP Services",
+    "subdomain": "SSH",
+    "title": "Configure and verify SSH access for remote device management",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-is-07",
+    "trackId": "ccna-core",
+    "domain": "IP Services",
+    "subdomain": "File Transfer",
+    "title": "Describe TFTP/FTP roles in network device management and upgrades",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-sf-01",
+    "trackId": "ccna-core",
+    "domain": "Security Fundamentals",
+    "subdomain": "Security Concepts",
+    "title": "Define key security concepts (threats, vulnerabilities, exploits, mitigation)",
+    "weight": 15
+  },
+  {
+    "id": "ccna-core-sf-02",
+    "trackId": "ccna-core",
+    "domain": "Security Fundamentals",
+    "subdomain": "Security Program",
+    "title": "Describe security program elements (awareness, physical access, user training)",
+    "weight": 15
+  },
+  {
+    "id": "ccna-core-sf-03",
+    "trackId": "ccna-core",
+    "domain": "Security Fundamentals",
+    "subdomain": "Device Access",
+    "title": "Configure device access control using local and remote security passwords",
+    "weight": 15
+  },
+  {
+    "id": "ccna-core-sf-04",
+    "trackId": "ccna-core",
+    "domain": "Security Fundamentals",
+    "subdomain": "Remote Access",
+    "title": "Describe security password policy and remote access/VPN concepts",
+    "weight": 15
+  },
+  {
+    "id": "ccna-core-sf-05",
+    "trackId": "ccna-core",
+    "domain": "Security Fundamentals",
+    "subdomain": "ACLs",
+    "title": "Describe access control lists and use cases (standard, extended, named)",
+    "weight": 15
+  },
+  {
+    "id": "ccna-core-sf-06",
+    "trackId": "ccna-core",
+    "domain": "Security Fundamentals",
+    "subdomain": "Layer 2 Security",
+    "title": "Configure Layer 2 security features (DHCP snooping, DAI, port security)",
+    "weight": 15
+  },
+  {
+    "id": "ccna-core-sf-07",
+    "trackId": "ccna-core",
+    "domain": "Security Fundamentals",
+    "subdomain": "AAA",
+    "title": "Differentiate authentication, authorization, and accounting (AAA) methods",
+    "weight": 15
+  },
+  {
+    "id": "ccna-core-sf-08",
+    "trackId": "ccna-core",
+    "domain": "Security Fundamentals",
+    "subdomain": "Wireless Security",
+    "title": "Describe wireless security protocols (WPA2, WPA3, 802.1X, EAP)",
+    "weight": 15
+  },
+  {
+    "id": "ccna-core-ap-01",
+    "trackId": "ccna-core",
+    "domain": "Automation and Programmability",
+    "subdomain": "Automation Impact",
+    "title": "Explain how automation impacts network management and operations",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-ap-02",
+    "trackId": "ccna-core",
+    "domain": "Automation and Programmability",
+    "subdomain": "Controller-Based",
+    "title": "Compare traditional networks with controller-based networking (SDN, overlays)",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-ap-03",
+    "trackId": "ccna-core",
+    "domain": "Automation and Programmability",
+    "subdomain": "REST APIs",
+    "title": "Describe REST APIs and data encoding (JSON, XML)",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-ap-04",
+    "trackId": "ccna-core",
+    "domain": "Automation and Programmability",
+    "subdomain": "Config Management",
+    "title": "Recognize capabilities of configuration management mechanisms (Ansible, Puppet, Chef)",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-ap-05",
+    "trackId": "ccna-core",
+    "domain": "Automation and Programmability",
+    "subdomain": "JSON",
+    "title": "Interpret JSON encoded data for network automation tasks",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-ap-06",
+    "trackId": "ccna-core",
+    "domain": "Automation and Programmability",
+    "subdomain": "Automation Tools",
+    "title": "Compare agent-based vs agentless automation tools and use cases",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-ap-07",
+    "trackId": "ccna-core",
+    "domain": "Automation and Programmability",
+    "subdomain": "YANG Models",
+    "title": "Describe YANG data models and their role in network programmability",
+    "weight": 10
+  },
+  {
+    "id": "ccna-core-ap-08",
+    "trackId": "ccna-core",
+    "domain": "Automation and Programmability",
+    "subdomain": "NETCONF/RESTCONF",
+    "title": "Describe capabilities of RESTCONF and NETCONF protocols",
+    "weight": 10
+  }
+]
