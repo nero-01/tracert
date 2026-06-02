@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -25,6 +26,12 @@ export function HoursChart({
   sessions: StudySession[];
   weeklyTarget: number;
 }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const weeks = new Map<string, number>();
   const now = new Date();
 
@@ -51,16 +58,20 @@ export function HoursChart({
     <div className="rounded-lg border bg-card p-4">
       <p className="mb-3 text-sm font-medium">Last 8 weeks</p>
       <div className="h-64 w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="week" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="actual" fill="#0d9488" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="target" fill="#94a3b8" radius={[4, 4, 0, 0]} />
-          </BarChart>
-        </ResponsiveContainer>
+        {mounted ? (
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="week" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="actual" fill="#0d9488" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="target" fill="#94a3b8" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        ) : (
+          <div className="h-full w-full animate-pulse rounded-md bg-muted" />
+        )}
       </div>
     </div>
   );
