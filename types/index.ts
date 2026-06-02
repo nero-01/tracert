@@ -22,6 +22,11 @@ export interface BlueprintTopic {
   weight: number;
 }
 
+export interface TopicWithProgress extends BlueprintTopic {
+  status: TopicStatus;
+  confidence: ConfidenceLevel;
+}
+
 export interface UserTopicProgress {
   topicId: string;
   userId: string;
