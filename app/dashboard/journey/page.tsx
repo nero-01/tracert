@@ -7,7 +7,7 @@ export default function JourneyPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold">Cert Journey</h1>
+        <h1>Cert Journey</h1>
         <Button asChild variant="outline">
           <Link href="/dashboard/settings">Update Goals</Link>
         </Button>

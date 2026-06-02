@@ -56,30 +56,33 @@ export function BlueprintTracker() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="min-w-0 space-y-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div className="min-w-0">
-          <h1>Blueprint Tracker</h1>
-          {activeTrack && (
-            <p className="mt-1 text-sm text-[var(--text-secondary)]">
-              {activeTrack.name} · {activeTrack.examCode}
-            </p>
-          )}
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div className="min-w-0">
+              <h1>Blueprint Tracker</h1>
+              {activeTrack && (
+                <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                  {activeTrack.name} · {activeTrack.examCode}
+                </p>
+              )}
+            </div>
+            <div className="hidden shrink-0 lg:block lg:w-72">
+              <TrackSelector value={trackId} onTrackChange={setTrackId} />
+            </div>
+          </div>
           <div className="mt-4 lg:hidden">
             <TrackSelector value={trackId} onTrackChange={setTrackId} />
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-3 sm:flex-row lg:flex-col">
+        <div className="flex shrink-0 flex-col items-center gap-3 sm:flex-row lg:flex-col">
           <ProgressRing value={readiness} size={120} />
-          <p className="text-sm text-[var(--text-muted)]">
+          <p className="max-w-[200px] text-center text-sm text-[var(--text-muted)] lg:text-left">
             {masteredCount} of {topics.length} mastered · ~{hoursRemaining}h left
           </p>
         </div>
-      </div>
-
-      <div className="hidden lg:block">
-        <TrackSelector value={trackId} onTrackChange={setTrackId} className="max-w-md" />
       </div>
 
       <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none sm:mx-0 sm:px-0">

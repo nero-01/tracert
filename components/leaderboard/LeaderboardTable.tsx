@@ -1,3 +1,6 @@
+import { SurfaceCard } from "@/components/ui/surface-card";
+import { cn } from "@/lib/utils";
+
 const rows = [
   { rank: 1, name: "Taylor R.", track: "CCIE Enterprise", hours: 42.6, topics: 18 },
   { rank: 2, name: "Dev User", track: "CCNA Core", hours: 31.2, topics: 14 },
@@ -8,37 +11,43 @@ const rows = [
 
 export function LeaderboardTable() {
   return (
-    <div className="overflow-hidden rounded-lg border bg-card">
-      <div className="border-b px-4 py-3">
-        <p className="text-sm font-medium">Community Leaderboard (Mock)</p>
+    <SurfaceCard padding="sm" className="overflow-hidden p-0">
+      <div className="border-b border-[var(--border)] px-4 py-3">
+        <p className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+          Community leaderboard
+        </p>
+        <p className="text-sm text-[var(--text-secondary)]">Mock data for development</p>
       </div>
-      <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-muted/50 text-muted-foreground">
+      <div className="w-full min-w-0 overflow-x-auto">
+        <table className="w-full min-w-[480px] text-left text-sm">
+          <thead className="bg-[var(--bg-elevated)] text-[var(--text-muted)]">
             <tr>
-              <th className="px-4 py-2">Rank</th>
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Track</th>
-              <th className="px-4 py-2">Hours</th>
-              <th className="px-4 py-2">Topics</th>
+              <th className="px-4 py-2 font-medium">Rank</th>
+              <th className="px-4 py-2 font-medium">Name</th>
+              <th className="px-4 py-2 font-medium">Track</th>
+              <th className="px-4 py-2 font-medium">Hours</th>
+              <th className="px-4 py-2 font-medium">Topics</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row) => (
               <tr
                 key={row.rank}
-                className={row.name === "Dev User" ? "bg-primary/5" : "border-t"}
+                className={cn(
+                  "border-t border-[var(--border)] transition-colors hover:bg-[var(--bg-elevated)]",
+                  row.name === "Dev User" && "bg-brand-500/5"
+                )}
               >
-                <td className="px-4 py-2 font-medium">#{row.rank}</td>
-                <td className="px-4 py-2">{row.name}</td>
-                <td className="px-4 py-2">{row.track}</td>
-                <td className="px-4 py-2">{row.hours.toFixed(1)}</td>
-                <td className="px-4 py-2">{row.topics}</td>
+                <td className="px-4 py-3 font-medium text-[var(--text-primary)]">#{row.rank}</td>
+                <td className="px-4 py-3 text-[var(--text-primary)]">{row.name}</td>
+                <td className="px-4 py-3 text-[var(--text-secondary)]">{row.track}</td>
+                <td className="px-4 py-3 text-[var(--text-secondary)]">{row.hours.toFixed(1)}</td>
+                <td className="px-4 py-3 text-[var(--text-secondary)]">{row.topics}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </div>
+    </SurfaceCard>
   );
 }

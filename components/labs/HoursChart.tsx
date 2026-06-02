@@ -5,11 +5,14 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
+import { SurfaceCard } from "@/components/ui/surface-card";
+import { Skeleton } from "@/components/ui/skeleton";
 import type { StudySession } from "@/types";
 
 function getWeekLabel(date: Date) {
@@ -55,24 +58,33 @@ export function HoursChart({
   }));
 
   return (
-    <div className="rounded-lg border bg-card p-4">
-      <p className="mb-3 text-sm font-medium">Last 8 weeks</p>
-      <div className="h-64 w-full">
+    <SurfaceCard className="min-w-0">
+      <p className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+        Last 8 weeks
+      </p>
+      <div className="mt-4 w-full min-w-0" style={{ minWidth: 0 }}>
         {mounted ? (
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height={240}>
             <BarChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="week" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="actual" fill="#0d9488" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="target" fill="#94a3b8" radius={[4, 4, 0, 0]} />
+              <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" />
+              <XAxis dataKey="week" stroke="var(--text-muted)" fontSize={12} />
+              <YAxis stroke="var(--text-muted)" fontSize={12} />
+              <Tooltip
+                contentStyle={{
+                  background: "var(--bg-surface)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "14px",
+                }}
+              />
+              <Legend />
+              <Bar dataKey="actual" name="Actual" fill="var(--brand-primary)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="target" name="Target" fill="var(--text-muted)" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <div className="h-full w-full animate-pulse rounded-md bg-muted" />
+          <Skeleton className="h-[240px] w-full rounded-card" />
         )}
       </div>
-    </div>
+    </SurfaceCard>
   );
 }

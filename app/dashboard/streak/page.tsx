@@ -1,13 +1,15 @@
 "use client";
 
 import { StreakCard } from "@/components/dashboard/StreakCard";
+import { SurfaceCard } from "@/components/ui/surface-card";
 import { useStudySessions } from "@/hooks/useStudySessions";
+import { cn } from "@/lib/utils";
 
 function intensity(minutes: number) {
   if (minutes >= 120) return "bg-emerald-500";
-  if (minutes >= 30) return "bg-teal-500";
+  if (minutes >= 30) return "bg-brand-500";
   if (minutes > 0) return "bg-amber-500";
-  return "bg-muted";
+  return "bg-[var(--bg-subtle)]";
 }
 
 export default function StreakPage() {
@@ -29,26 +31,43 @@ export default function StreakPage() {
     .reduce((sum, s) => sum + s.durationMinutes, 0);
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Study Streak</h1>
+    <div className="min-w-0 space-y-6">
+      <h1>Study Streak</h1>
       <StreakCard />
 
-      <div className="rounded-lg border bg-card p-4">
-        <h3 className="mb-3 text-sm font-medium">12-week activity heatmap</h3>
-        <div className="grid grid-cols-12 gap-1 sm:grid-cols-14 md:grid-cols-21">
+      <SurfaceCard>
+        <p className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+          12-week activity
+        </p>
+        <div
+          className="mt-4 grid gap-1 overflow-x-auto pb-1 scrollbar-none"
+          style={{ gridTemplateColumns: "repeat(12, minmax(0, 1fr))" }}
+        >
           {days.map((day) => (
             <div
               key={day.key}
-              className={`h-4 w-4 rounded ${intensity(day.minutes)}`}
+              className={cn(
+                "aspect-square min-h-[12px] min-w-[12px] rounded-sm transition-transform hover:scale-110",
+                intensity(day.minutes)
+              )}
               title={`${day.key}: ${day.minutes} minutes`}
             />
           ))}
         </div>
-      </div>
+        <p className="mt-3 text-xs text-[var(--text-muted)]">
+          Less → more intensity · hover a cell for details
+        </p>
+      </SurfaceCard>
 
-      <div className="rounded-lg border bg-card p-4 text-sm text-muted-foreground">
-        This month: {(monthMinutes / 60).toFixed(1)} hours · {sessions.length} sessions
-      </div>
+      <SurfaceCard padding="sm">
+        <p className="text-sm text-[var(--text-secondary)]">
+          This month:{" "}
+          <span className="font-semibold text-[var(--text-primary)]">
+            {(monthMinutes / 60).toFixed(1)} hours
+          </span>{" "}
+          · {sessions.length} sessions logged
+        </p>
+      </SurfaceCard>
     </div>
   );
 }

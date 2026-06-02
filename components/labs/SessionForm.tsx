@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 import { TRACKS } from "@/data/tracks";
 import { MOCK_BLUEPRINT_TOPICS } from "@/lib/mock/mockBlueprint";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { SurfaceCard } from "@/components/ui/surface-card";
 import {
   Select,
   SelectContent,
@@ -12,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { formatHours } from "@/lib/utils";
 
 export function SessionForm({
   onSubmit,
@@ -30,6 +33,7 @@ export function SessionForm({
   const [minutes, setMinutes] = useState(0);
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [notes, setNotes] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const topics = useMemo(
     () => MOCK_BLUEPRINT_TOPICS.filter((t) => t.trackId === trackId),
@@ -39,27 +43,36 @@ export function SessionForm({
   const durationMinutes = Math.max(15, hours * 60 + minutes);
 
   async function handleSubmit() {
-    await onSubmit({
-      trackId,
-      topicId: topicId === "none" ? undefined : topicId,
-      durationMinutes,
-      notes,
-      createdAt: new Date(`${date}T12:00:00`).toISOString(),
-    });
-
-    setNotes("");
-    setMinutes(0);
-    setHours(1);
+    setSubmitting(true);
+    try {
+      await onSubmit({
+        trackId,
+        topicId: topicId === "none" ? undefined : topicId,
+        durationMinutes,
+        notes,
+        createdAt: new Date(`${date}T12:00:00`).toISOString(),
+      });
+      toast.success(`Session logged — ${formatHours(durationMinutes)}`);
+      setNotes("");
+      setMinutes(0);
+      setHours(1);
+    } catch {
+      toast.error("Could not log session. Try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
-    <div className="rounded-lg border bg-card p-4">
-      <h3 className="text-sm font-medium">Log Session</h3>
+    <SurfaceCard glowOnHover>
+      <h2 className="text-lg font-semibold text-[var(--text-primary)]">Log session</h2>
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         <div>
-          <label className="mb-1 block text-xs text-muted-foreground">Track</label>
+          <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+            Track
+          </label>
           <Select value={trackId} onValueChange={setTrackId}>
-            <SelectTrigger>
+            <SelectTrigger className="h-11 border-[var(--border)] bg-[var(--bg-elevated)]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -73,9 +86,11 @@ export function SessionForm({
         </div>
 
         <div>
-          <label className="mb-1 block text-xs text-muted-foreground">Topic (optional)</label>
+          <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+            Topic (optional)
+          </label>
           <Select value={topicId} onValueChange={setTopicId}>
-            <SelectTrigger>
+            <SelectTrigger className="h-11 border-[var(--border)] bg-[var(--bg-elevated)]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -91,17 +106,22 @@ export function SessionForm({
 
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="mb-1 block text-xs text-muted-foreground">Hours</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+              Hours
+            </label>
             <Input
               type="number"
               min={0}
               max={8}
               value={hours}
               onChange={(e) => setHours(Number(e.target.value))}
+              className="h-11 border-[var(--border)] bg-[var(--bg-elevated)]"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs text-muted-foreground">Minutes</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+              Minutes
+            </label>
             <Input
               type="number"
               min={0}
@@ -109,29 +129,39 @@ export function SessionForm({
               step={15}
               value={minutes}
               onChange={(e) => setMinutes(Number(e.target.value))}
+              className="h-11 border-[var(--border)] bg-[var(--bg-elevated)]"
             />
           </div>
         </div>
 
         <div>
-          <label className="mb-1 block text-xs text-muted-foreground">Date</label>
-          <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+            Date
+          </label>
+          <Input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            className="h-11 border-[var(--border)] bg-[var(--bg-elevated)]"
+          />
         </div>
       </div>
 
       <div className="mt-3">
-        <label className="mb-1 block text-xs text-muted-foreground">Notes</label>
+        <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
+          Notes
+        </label>
         <textarea
-          className="min-h-[90px] w-full rounded-md border bg-background px-3 py-2 text-sm"
+          className="min-h-[90px] w-full rounded-card border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="What did you work on?"
         />
       </div>
 
-      <Button className="mt-3" onClick={handleSubmit}>
-        Log Session
+      <Button className="mt-4 h-11 w-full sm:w-auto" onClick={handleSubmit} disabled={submitting}>
+        {submitting ? "Logging…" : "Log session"}
       </Button>
-    </div>
+    </SurfaceCard>
   );
 }
