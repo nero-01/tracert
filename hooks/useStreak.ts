@@ -1,15 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { MOCK_STREAK } from "@/lib/mock/mockUser";
 
 export function useStreak() {
-  const [isLoading] = useState(false);
-
   return {
-    currentStreak: 0,
-    longestStreak: 0,
-    lastActivityDate: undefined as string | undefined,
-    freezeTokens: 0,
-    isLoading,
+    currentStreak: MOCK_STREAK.current_streak,
+    longestStreak: MOCK_STREAK.longest_streak,
+    lastActivityDate: MOCK_STREAK.last_activity_date,
+    freezeTokens: MOCK_STREAK.freeze_tokens,
+    isLoading: false,
   };
 }

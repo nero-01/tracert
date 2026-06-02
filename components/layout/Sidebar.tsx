@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { useUser } from "@/hooks/useUser";
 import {
   BookOpen,
   Flame,
@@ -25,23 +28,35 @@ const navItems = [
   { href: "/dashboard/settings", label: "Settings", icon: Settings },
 ];
 
-export function Sidebar() {
+export default function Sidebar() {
   const pathname = usePathname();
+  const { isPro } = useUser();
 
   return (
-    <aside className="hidden w-64 shrink-0 border-r bg-card md:flex md:flex-col">
+    <aside className="w-72 shrink-0 border-r bg-card">
       <div className="border-b px-6 py-5">
         <Link href="/dashboard" className="text-lg font-semibold tracking-tight">
           Tracert
         </Link>
         <p className="text-xs text-muted-foreground">Cisco cert tracker</p>
       </div>
+
+      <div className="border-b px-6 py-4">
+        <div className="flex items-center gap-3">
+          <Avatar className="h-10 w-10">
+            <AvatarFallback>DU</AvatarFallback>
+          </Avatar>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-medium">Dev User</p>
+            <p className="truncate text-xs text-muted-foreground">dev@tracert.app</p>
+          </div>
+          {isPro && <Badge>Pro</Badge>}
+        </div>
+      </div>
+
       <nav className="flex flex-1 flex-col gap-1 p-4">
         {navItems.map(({ href, label, icon: Icon }) => {
-          const active =
-            pathname === href ||
-            (href !== "/dashboard" && pathname.startsWith(href));
-
+          const active = pathname === href || (href !== "/dashboard" && pathname.startsWith(href));
           return (
             <Link
               key={href}

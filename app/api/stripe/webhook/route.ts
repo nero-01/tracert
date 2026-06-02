@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 export async function POST() {
-  return NextResponse.json({ received: true });
+  return new Response(null, { status: 200 });
 }
