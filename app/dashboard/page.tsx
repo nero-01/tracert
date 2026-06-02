@@ -9,7 +9,12 @@ export default function DashboardPage() {
       <h1 className="text-2xl font-bold">Dashboard</h1>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <StreakCard />
-        <ProgressRing value={0} />
+        <div className="rounded-lg border bg-card p-4">
+          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">
+            Readiness
+          </p>
+          <ProgressRing value={62} size={88} />
+        </div>
         <CountdownBanner />
         <WeeklyChart />
       </div>
