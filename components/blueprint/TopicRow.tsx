@@ -1,24 +1,29 @@
 "use client";
 
+import { useState } from "react";
 import { Star } from "lucide-react";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import type { ConfidenceLevel, TopicStatus, TopicWithProgress } from "@/types";
 
-const STATUSES: { value: TopicStatus; label: string; className: string }[] = [
+const STATUSES: { value: TopicStatus; label: string; active: string }[] = [
   {
     value: "not_started",
     label: "Not Started",
-    className: "bg-muted text-muted-foreground hover:bg-muted/80",
+    active:
+      "bg-[var(--bg-elevated)] text-[var(--text-muted)] border-[var(--border)]",
   },
   {
     value: "in_progress",
     label: "In Progress",
-    className: "bg-amber-500/15 text-amber-700 hover:bg-amber-500/25 dark:text-amber-400",
+    active:
+      "bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400",
   },
   {
     value: "mastered",
     label: "Mastered",
-    className: "bg-emerald-500/15 text-emerald-700 hover:bg-emerald-500/25 dark:text-emerald-400",
+    active:
+      "bg-emerald-500/15 text-emerald-600 border-emerald-500/30 dark:text-emerald-400",
   },
 ];
 
@@ -31,50 +36,92 @@ interface TopicRowProps {
 }
 
 export function TopicRow({ topic, onUpdate }: TopicRowProps) {
+  const [hoverConfidence, setHoverConfidence] = useState<number | null>(null);
+  const [flash, setFlash] = useState(false);
+
+  const displayConfidence = hoverConfidence ?? topic.confidence;
+
+  function flashRow() {
+    setFlash(true);
+    window.setTimeout(() => setFlash(false), 400);
+  }
+
+  function handleStatus(value: TopicStatus) {
+    onUpdate(topic.id, { status: value });
+    flashRow();
+    toast.success("Topic status updated");
+  }
+
+  function handleConfidence(level: ConfidenceLevel) {
+    onUpdate(topic.id, { confidence: level });
+    flashRow();
+    toast.success(`Confidence set to ${level}/5`);
+  }
+
   return (
-    <div className="flex flex-col gap-3 border-b py-4 last:border-b-0 sm:flex-row sm:items-center sm:justify-between">
+    <div
+      className={cn(
+        "flex flex-col gap-3 border-b border-[var(--border)] py-4 last:border-b-0 sm:flex-row sm:items-center sm:justify-between",
+        "transition-colors duration-200 hover:bg-[var(--bg-elevated)]",
+        flash && "animate-flash"
+      )}
+    >
       <div className="min-w-0 flex-1">
         {topic.subdomain && (
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <p className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
             {topic.subdomain}
           </p>
         )}
-        <p className="text-sm font-medium leading-snug">{topic.title}</p>
+        <p className="line-clamp-2 text-sm font-medium leading-snug text-[var(--text-primary)] transition-colors group-hover:text-brand-500">
+          {topic.title}
+        </p>
       </div>
 
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-        <div className="flex flex-wrap gap-1">
-          {STATUSES.map(({ value, label, className }) => (
+      <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
+        <div className="grid w-full grid-cols-3 overflow-hidden rounded-pill border border-[var(--border)] sm:w-auto sm:flex">
+          {STATUSES.map(({ value, label, active }) => (
             <button
               key={value}
               type="button"
-              onClick={() => onUpdate(topic.id, { status: value })}
+              onClick={() => handleStatus(value)}
               className={cn(
-                "rounded-md px-2 py-1 text-xs font-medium transition-colors",
-                className,
-                topic.status === value && "ring-2 ring-ring ring-offset-1"
+                "tap-target px-2 py-2 text-xs font-medium transition-all duration-100 active:scale-95 sm:px-3",
+                topic.status === value
+                  ? active
+                  : "bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)]"
               )}
             >
-              {label}
+              <span className="hidden sm:inline">{label}</span>
+              <span className="sm:hidden">
+                {value === "not_started" ? "New" : value === "in_progress" ? "Go" : "Done"}
+              </span>
             </button>
           ))}
         </div>
 
-        <div className="flex items-center gap-0.5" aria-label="Confidence level">
+        <div
+          className="flex items-center gap-1"
+          aria-label="Confidence level"
+          onMouseLeave={() => setHoverConfidence(null)}
+        >
           {([1, 2, 3, 4, 5] as ConfidenceLevel[]).map((level) => (
             <button
               key={level}
               type="button"
-              onClick={() => onUpdate(topic.id, { confidence: level })}
-              className="rounded p-0.5 transition-colors hover:text-amber-500"
+              onMouseEnter={() => setHoverConfidence(level)}
+              onClick={() => handleConfidence(level)}
+              className="tap-target flex items-center justify-center rounded p-1 transition-transform active:scale-95"
               aria-label={`Confidence ${level}`}
             >
               <Star
                 className={cn(
-                  "h-3.5 w-3.5 sm:h-4 sm:w-4",
-                  level <= topic.confidence
+                  "h-5 w-5 transition-all duration-150 sm:h-4 sm:w-4",
+                  level <= displayConfidence
                     ? "fill-amber-400 text-amber-400"
-                    : "text-muted-foreground/40"
+                    : "text-[var(--text-muted)]/40",
+                  level === topic.confidence &&
+                    level <= displayConfidence &&
+                    "scale-125"
                 )}
               />
             </button>

@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import * as Collapsible from "@radix-ui/react-collapsible";
 import { TopicRow } from "@/components/blueprint/TopicRow";
-import { Progress } from "@/components/ui/progress";
+import { SurfaceCard } from "@/components/ui/surface-card";
+import { getDomainColor } from "@/lib/blueprint/domain-colors";
 import { cn } from "@/lib/utils";
 import type { ConfidenceLevel, TopicStatus, TopicWithProgress } from "@/types";
 
@@ -31,61 +33,83 @@ export function DomainAccordion({
     }
   }, [domains]);
 
-  function toggleDomain(domain: string) {
+  function toggle(domain: string, open: boolean) {
     setOpenDomains((prev) => {
       const next = new Set(prev);
-      if (next.has(domain)) next.delete(domain);
-      else next.add(domain);
+      if (open) next.add(domain);
+      else next.delete(domain);
       return next;
     });
   }
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       {domains.map((domain) => {
         const domainTopics = topics.filter((t) => t.domain === domain);
         const weight = domainTopics[0]?.weight ?? 0;
         const progress = progressByDomain[domain] ?? 0;
         const isOpen = openDomains.has(domain);
-        const mastered = domainTopics.filter((t) => t.status === "mastered").length;
+        const dotColor = getDomainColor(domain, domains);
 
         return (
-          <div key={domain} className="rounded-lg border bg-card">
-            <button
-              type="button"
-              onClick={() => toggleDomain(domain)}
-              className="flex w-full items-center gap-3 p-4 text-left"
-            >
-              <ChevronDown
-                className={cn(
-                  "h-4 w-4 shrink-0 text-muted-foreground transition-transform",
-                  isOpen && "rotate-180"
-                )}
-              />
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-medium">{domain}</span>
-                  {weight > 0 && (
-                    <span className="text-xs text-muted-foreground">· {weight}%</span>
-                  )}
-                </div>
-                <div className="mt-2 flex items-center gap-3">
-                  <Progress value={progress} className="h-2 flex-1" />
-                  <span className="shrink-0 text-xs text-muted-foreground">
-                    {progress}% · {mastered}/{domainTopics.length}
-                  </span>
-                </div>
-              </div>
-            </button>
+          <Collapsible.Root
+            key={domain}
+            open={isOpen}
+            onOpenChange={(open) => toggle(domain, open)}
+          >
+            <SurfaceCard hoverable padding="sm" className="overflow-hidden p-0">
+              <Collapsible.Trigger asChild>
+                <button
+                  type="button"
+                  className="group flex w-full items-center gap-3 p-4 text-left transition-all duration-200"
+                >
+                  <span
+                    className={cn(
+                      "h-3 w-3 shrink-0 rounded-full transition-transform duration-200 group-hover:scale-125 group-hover:shadow-glow-teal",
+                      dotColor
+                    )}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-medium text-[var(--text-primary)]">
+                        {domain}
+                      </span>
+                      {weight > 0 && (
+                        <span className="rounded-pill bg-[var(--bg-elevated)] px-2 py-0.5 text-xs text-[var(--text-muted)]">
+                          {weight}%
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-2 flex items-center gap-3">
+                      <div className="hidden h-2 w-16 overflow-hidden rounded-pill bg-[var(--bg-subtle)] sm:block">
+                        <div
+                          className="h-full rounded-pill bg-brand-500 transition-all duration-300"
+                          style={{ width: `${progress}%` }}
+                        />
+                      </div>
+                      <span className="text-xs text-[var(--text-muted)]">
+                        {progress}%
+                      </span>
+                    </div>
+                  </div>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 shrink-0 text-[var(--text-muted)] transition-transform duration-200",
+                      isOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+              </Collapsible.Trigger>
 
-            {isOpen && (
-              <div className="border-t px-4">
-                {domainTopics.map((topic) => (
-                  <TopicRow key={topic.id} topic={topic} onUpdate={onUpdateTopic} />
-                ))}
-              </div>
-            )}
-          </div>
+              <Collapsible.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                <div className="border-t border-[var(--border)] bg-[var(--bg-elevated)] px-4">
+                  {domainTopics.map((topic) => (
+                    <TopicRow key={topic.id} topic={topic} onUpdate={onUpdateTopic} />
+                  ))}
+                </div>
+              </Collapsible.Content>
+            </SurfaceCard>
+          </Collapsible.Root>
         );
       })}
     </div>
