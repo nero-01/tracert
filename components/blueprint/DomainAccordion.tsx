@@ -9,7 +9,10 @@ import { getDomainColor } from "@/lib/blueprint/domain-colors";
 import { cn } from "@/lib/utils";
 import type { ConfidenceLevel, TopicStatus, TopicWithProgress } from "@/types";
 
+type ComponentFilter = "all" | "written" | "lab";
+
 interface DomainAccordionProps {
+  trackId: string;
   domains: string[];
   topics: TopicWithProgress[];
   progressByDomain: Record<string, number>;
@@ -20,12 +23,15 @@ interface DomainAccordionProps {
 }
 
 export function DomainAccordion({
+  trackId,
   domains,
   topics,
   progressByDomain,
   onUpdateTopic,
 }: DomainAccordionProps) {
   const [openDomains, setOpenDomains] = useState<Set<string>>(new Set());
+  const [filters, setFilters] = useState<Record<string, ComponentFilter>>({});
+  const isCcie = trackId === "ccie-enterprise";
 
   useEffect(() => {
     if (domains.length > 0) {
@@ -42,6 +48,28 @@ export function DomainAccordion({
     });
   }
 
+  function getFilter(domain: string): ComponentFilter {
+    return filters[domain] ?? "all";
+  }
+
+  function setFilter(domain: string, filter: ComponentFilter) {
+    setFilters((prev) => ({ ...prev, [domain]: filter }));
+  }
+
+  function filterTopics(domainTopics: TopicWithProgress[], filter: ComponentFilter) {
+    if (!isCcie || filter === "all") return domainTopics;
+    if (filter === "written") {
+      return domainTopics.filter((t) => t.component === "written" || t.component === "both");
+    }
+    return domainTopics.filter((t) => t.component === "lab" || t.component === "both");
+  }
+
+  const filterChips: { id: ComponentFilter; label: string }[] = [
+    { id: "all", label: "All" },
+    { id: "written", label: "Written" },
+    { id: "lab", label: "Lab" },
+  ];
+
   return (
     <div className="space-y-3">
       {domains.map((domain) => {
@@ -50,6 +78,8 @@ export function DomainAccordion({
         const progress = progressByDomain[domain] ?? 0;
         const isOpen = openDomains.has(domain);
         const dotColor = getDomainColor(domain, domains);
+        const filter = getFilter(domain);
+        const visibleTopics = filterTopics(domainTopics, filter);
 
         return (
           <Collapsible.Root
@@ -71,9 +101,7 @@ export function DomainAccordion({
                   />
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-medium text-[var(--text-primary)]">
-                        {domain}
-                      </span>
+                      <span className="font-medium text-[var(--text-primary)]">{domain}</span>
                       {weight > 0 && (
                         <span className="rounded-pill bg-[var(--bg-elevated)] px-2 py-0.5 text-xs text-[var(--text-muted)]">
                           {weight}%
@@ -87,9 +115,7 @@ export function DomainAccordion({
                           style={{ width: `${progress}%` }}
                         />
                       </div>
-                      <span className="text-xs text-[var(--text-muted)]">
-                        {progress}%
-                      </span>
+                      <span className="text-xs text-[var(--text-muted)]">{progress}%</span>
                     </div>
                   </div>
                   <ChevronDown
@@ -103,7 +129,26 @@ export function DomainAccordion({
 
               <Collapsible.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
                 <div className="border-t border-[var(--border)] bg-[var(--bg-elevated)] px-4">
-                  {domainTopics.map((topic) => (
+                  {isCcie && isOpen && (
+                    <div className="flex flex-wrap gap-2 py-3">
+                      {filterChips.map((chip) => (
+                        <button
+                          key={chip.id}
+                          type="button"
+                          onClick={() => setFilter(domain, chip.id)}
+                          className={cn(
+                            "rounded-pill px-3 py-1 text-xs font-medium transition-all duration-200 active:scale-95",
+                            filter === chip.id
+                              ? "bg-brand-500/15 text-brand-500 border border-brand-500/30"
+                              : "bg-[var(--bg-surface)] text-[var(--text-muted)] border border-[var(--border)] hover:border-brand-500/30"
+                          )}
+                        >
+                          {chip.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  {visibleTopics.map((topic) => (
                     <TopicRow key={topic.id} topic={topic} onUpdate={onUpdateTopic} />
                   ))}
                 </div>

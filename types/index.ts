@@ -13,6 +13,8 @@ export interface Track {
   examDuration: number;
 }
 
+export type BlueprintComponent = "written" | "lab" | "both";
+
 export interface BlueprintTopic {
   id: string;
   trackId: string;
@@ -20,6 +22,7 @@ export interface BlueprintTopic {
   subdomain?: string;
   title: string;
   weight: number;
+  component?: BlueprintComponent;
 }
 
 export interface TopicWithProgress extends BlueprintTopic {
@@ -39,9 +42,10 @@ export interface StudySession {
   id: string;
   userId: string;
   trackId: string;
-  topicId?: string;
+  topicId?: string | null;
   durationMinutes: number;
-  notes?: string;
+  notes?: string | null;
+  sessionDate?: string;
   createdAt: string;
 }
 

@@ -4,7 +4,23 @@ import { useState } from "react";
 import { Star } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import type { ConfidenceLevel, TopicStatus, TopicWithProgress } from "@/types";
+import type { BlueprintComponent, ConfidenceLevel, TopicStatus, TopicWithProgress } from "@/types";
+
+function ComponentBadge({ component }: { component: BlueprintComponent }) {
+  if (component === "written") return null;
+  if (component === "lab") {
+    return (
+      <span className="inline-flex rounded border border-amber-500/20 bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-bold text-amber-500">
+        LAB
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex rounded border border-brand-500/20 bg-brand-500/10 px-1.5 py-0.5 text-[10px] font-bold text-brand-500">
+      LAB+W
+    </span>
+  );
+}
 
 const STATUSES: { value: TopicStatus; label: string; active: string }[] = [
   {
@@ -75,6 +91,11 @@ export function TopicRow({ topic, onUpdate }: TopicRowProps) {
         <p className="line-clamp-2 text-sm font-medium leading-snug text-[var(--text-primary)] transition-colors group-hover:text-brand-500">
           {topic.title}
         </p>
+        {topic.component && topic.component !== "written" && (
+          <div className="mt-1">
+            <ComponentBadge component={topic.component} />
+          </div>
+        )}
       </div>
 
       <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-4">

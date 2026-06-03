@@ -7,14 +7,19 @@ import { cn } from "@/lib/utils";
 
 interface CountdownBannerProps {
   readiness?: number;
+  daysLeft?: number;
   className?: string;
 }
 
-export function CountdownBanner({ readiness = 62, className }: CountdownBannerProps) {
+export function CountdownBanner({
+  readiness = 62,
+  daysLeft: daysLeftProp,
+  className,
+}: CountdownBannerProps) {
   const examDate = new Date(MOCK_USER.exam_date);
-  const now = new Date();
-  const diffMs = examDate.getTime() - now.getTime();
-  const daysLeft = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+  const daysLeft =
+    daysLeftProp ??
+    Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
 
   return (
     <SurfaceCard

@@ -1,51 +1,58 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { MOCK_STUDY_SESSIONS } from "@/lib/mock/mockSessions";
+import { useMemo } from "react";
 import { MOCK_USER } from "@/lib/mock/mockUser";
-import type { StudySession } from "@/types";
-
-function sameWeek(a: Date, b: Date) {
-  const oneJan = new Date(a.getFullYear(), 0, 1);
-  const aWeek = Math.floor(((a.getTime() - oneJan.getTime()) / 86400000 + oneJan.getDay()) / 7);
-  const bWeek = Math.floor(((b.getTime() - oneJan.getTime()) / 86400000 + oneJan.getDay()) / 7);
-  return a.getFullYear() === b.getFullYear() && aWeek === bWeek;
-}
+import { useStudySessionsStore } from "@/lib/stores/studySessionsStore";
+import {
+  getLast8WeeksBuckets,
+  getSessionDate,
+  isSameISOWeek,
+} from "@/lib/sessions/dateUtils";
 
 export function useStudySessions() {
-  const [sessions, setSessions] = useState<StudySession[]>(MOCK_STUDY_SESSIONS);
+  const sessions = useStudySessionsStore((s) => s.sessions);
+  const addSession = useStudySessionsStore((s) => s.addSession);
+  const deleteSession = useStudySessionsStore((s) => s.deleteSession);
+  const restoreSession = useStudySessionsStore((s) => s.restoreSession);
+
+  const weeklyTarget = MOCK_USER.weekly_hour_goal;
 
   const weeklyHours = useMemo(() => {
     const now = new Date();
     const minutes = sessions
-      .filter((s) => sameWeek(new Date(s.createdAt), now))
+      .filter((s) => isSameISOWeek(new Date(getSessionDate(s)), now))
       .reduce((sum, s) => sum + s.durationMinutes, 0);
     return Math.round((minutes / 60) * 10) / 10;
   }, [sessions]);
 
-  const weeklyTarget = MOCK_USER.weekly_hour_goal;
+  const monthlyHours = useMemo(() => {
+    const now = new Date();
+    const minutes = sessions
+      .filter((s) => new Date(getSessionDate(s)).getMonth() === now.getMonth())
+      .reduce((sum, s) => sum + s.durationMinutes, 0);
+    return Math.round((minutes / 60) * 10) / 10;
+  }, [sessions]);
 
-  const addSession = async (
-    data: Omit<StudySession, "id" | "userId" | "createdAt"> & { createdAt?: string }
-  ) => {
-    const session: StudySession = {
-      id: `s-${Date.now()}`,
-      userId: MOCK_USER.id,
-      trackId: data.trackId,
-      topicId: data.topicId,
-      durationMinutes: data.durationMinutes,
-      notes: data.notes,
-      createdAt: data.createdAt ?? new Date().toISOString(),
-    };
+  const totalHours = useMemo(() => {
+    const minutes = sessions.reduce((sum, s) => sum + s.durationMinutes, 0);
+    return Math.round((minutes / 60) * 10) / 10;
+  }, [sessions]);
 
-    setSessions((prev) => [session, ...prev]);
-  };
+  const last8Weeks = useMemo(
+    () => getLast8WeeksBuckets(sessions, weeklyTarget),
+    [sessions, weeklyTarget]
+  );
 
   return {
     sessions,
     weeklyHours,
     weeklyTarget,
+    monthlyHours,
+    totalHours,
+    last8Weeks,
     addSession,
+    deleteSession,
+    restoreSession,
     isLoading: false,
   };
 }

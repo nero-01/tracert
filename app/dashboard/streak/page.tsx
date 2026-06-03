@@ -1,73 +1,94 @@
 "use client";
 
 import { StreakCard } from "@/components/dashboard/StreakCard";
+import { StreakHeatmap } from "@/components/streak/StreakHeatmap";
 import { SurfaceCard } from "@/components/ui/surface-card";
+import { useStreak } from "@/hooks/useStreak";
 import { useStudySessions } from "@/hooks/useStudySessions";
-import { cn } from "@/lib/utils";
-
-function intensity(minutes: number) {
-  if (minutes >= 120) return "bg-emerald-500";
-  if (minutes >= 30) return "bg-brand-500";
-  if (minutes > 0) return "bg-amber-500";
-  return "bg-[var(--bg-subtle)]";
-}
+import { getSessionDate } from "@/lib/sessions/dateUtils";
+import { format, parseISO } from "date-fns";
 
 export default function StreakPage() {
-  const { sessions } = useStudySessions();
-  const now = new Date();
+  const { currentStreak, longestStreak, calendarData } = useStreak();
+  const { sessions, monthlyHours } = useStudySessions();
 
-  const days = Array.from({ length: 84 }).map((_, i) => {
-    const date = new Date(now);
-    date.setDate(now.getDate() - (83 - i));
-    const key = date.toISOString().slice(0, 10);
-    const minutes = sessions
-      .filter((s) => s.createdAt.slice(0, 10) === key)
-      .reduce((sum, s) => sum + s.durationMinutes, 0);
-    return { key, minutes };
+  const monthSessionCount = sessions.filter(
+    (s) => new Date(getSessionDate(s)).getMonth() === new Date().getMonth()
+  ).length;
+
+  const dayTotals = new Map<number, { total: number; count: number }>();
+  sessions.forEach((s) => {
+    const d = parseISO(getSessionDate(s)).getDay();
+    const entry = dayTotals.get(d) ?? { total: 0, count: 0 };
+    entry.total += s.durationMinutes / 60;
+    entry.count += 1;
+    dayTotals.set(d, entry);
   });
 
-  const monthMinutes = sessions
-    .filter((s) => new Date(s.createdAt).getMonth() === now.getMonth())
-    .reduce((sum, s) => sum + s.durationMinutes, 0);
+  let bestDay = "—";
+  let bestAvg = 0;
+  dayTotals.forEach((v, day) => {
+    const avg = v.total / v.count;
+    if (avg > bestAvg) {
+      bestAvg = avg;
+      bestDay = format(new Date(2024, 0, day), "EEEE");
+    }
+  });
 
   return (
     <div className="min-w-0 space-y-6">
       <h1>Study Streak</h1>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <SurfaceCard hoverable className="flex items-center gap-3">
+          <span className="text-2xl">🔥</span>
+          <div>
+            <p className="text-xs text-[var(--text-muted)]">Current</p>
+            <p className="text-2xl font-bold text-[var(--text-primary)]">{currentStreak} days</p>
+          </div>
+        </SurfaceCard>
+        <SurfaceCard hoverable className="flex items-center gap-3">
+          <span className="text-2xl">🏆</span>
+          <div>
+            <p className="text-xs text-[var(--text-muted)]">Longest</p>
+            <p className="text-2xl font-bold text-[var(--text-primary)]">{longestStreak} days</p>
+          </div>
+        </SurfaceCard>
+      </div>
+
       <StreakCard />
 
       <SurfaceCard>
         <p className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
           12-week activity
         </p>
-        <div
-          className="mt-4 grid gap-1 overflow-x-auto pb-1 scrollbar-none"
-          style={{ gridTemplateColumns: "repeat(12, minmax(0, 1fr))" }}
-        >
-          {days.map((day) => (
-            <div
-              key={day.key}
-              className={cn(
-                "aspect-square min-h-[12px] min-w-[12px] rounded-sm transition-transform hover:scale-110",
-                intensity(day.minutes)
-              )}
-              title={`${day.key}: ${day.minutes} minutes`}
-            />
-          ))}
+        <div className="mt-4">
+          <StreakHeatmap calendarData={calendarData} />
         </div>
-        <p className="mt-3 text-xs text-[var(--text-muted)]">
-          Less → more intensity · hover a cell for details
-        </p>
       </SurfaceCard>
 
-      <SurfaceCard padding="sm">
-        <p className="text-sm text-[var(--text-secondary)]">
-          This month:{" "}
-          <span className="font-semibold text-[var(--text-primary)]">
-            {(monthMinutes / 60).toFixed(1)} hours
-          </span>{" "}
-          · {sessions.length} sessions logged
-        </p>
-      </SurfaceCard>
+      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none sm:mx-0 sm:px-0">
+        <SurfaceCard padding="sm" className="min-w-[180px] shrink-0">
+          <p className="text-xs text-[var(--text-muted)]">Sessions this month</p>
+          <p className="text-lg font-bold text-[var(--text-primary)]">{monthSessionCount}</p>
+        </SurfaceCard>
+        <SurfaceCard padding="sm" className="min-w-[180px] shrink-0">
+          <p className="text-xs text-[var(--text-muted)]">Hours this month</p>
+          <p className="text-lg font-bold text-[var(--text-primary)]">{monthlyHours} hrs</p>
+        </SurfaceCard>
+        <SurfaceCard padding="sm" className="min-w-[200px] shrink-0">
+          <p className="text-xs text-[var(--text-muted)]">Most productive day</p>
+          <p className="text-sm font-bold text-[var(--text-primary)]">
+            {bestDay}
+            {bestAvg > 0 && (
+              <span className="font-normal text-[var(--text-muted)]">
+                {" "}
+                (avg {bestAvg.toFixed(1)} hrs)
+              </span>
+            )}
+          </p>
+        </SurfaceCard>
+      </div>
     </div>
   );
 }

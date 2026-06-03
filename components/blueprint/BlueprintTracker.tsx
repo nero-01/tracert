@@ -121,6 +121,7 @@ export function BlueprintTracker() {
         </SurfaceCard>
       ) : (
         <DomainAccordion
+          trackId={trackId}
           domains={domains}
           topics={topics}
           progressByDomain={progressByDomain}

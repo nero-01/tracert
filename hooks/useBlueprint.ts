@@ -1,15 +1,19 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { MOCK_BLUEPRINT_TOPICS } from "@/lib/mock/mockBlueprint";
+import { getAllSeededBlueprintTopics } from "@/lib/blueprint/loadBlueprint";
 import type { ConfidenceLevel, TopicStatus, TopicWithProgress } from "@/types";
 
 export function useBlueprint(activeTrackId?: string) {
-  const [allTopics, setAllTopics] = useState<TopicWithProgress[]>(MOCK_BLUEPRINT_TOPICS);
+  const [allTopics, setAllTopics] = useState<TopicWithProgress[]>(() =>
+    getAllSeededBlueprintTopics()
+  );
+
+  const trackId = activeTrackId ?? "ccna-core";
 
   const topics = useMemo(
-    () => allTopics.filter((t) => t.trackId === (activeTrackId ?? "ccna-core")),
-    [allTopics, activeTrackId]
+    () => allTopics.filter((t) => t.trackId === trackId),
+    [allTopics, trackId]
   );
 
   const domains = useMemo(

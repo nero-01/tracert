@@ -68,7 +68,21 @@ export function TrackSelector({ value, onTrackChange, className }: TrackSelector
                   value={track.id}
                   className="focus:bg-[var(--bg-elevated)] data-[state=checked]:bg-brand-500/10 data-[state=checked]:text-brand-500"
                 >
-                  {track.name} · {track.examCode}
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span>
+                      {track.name} · {track.examCode}
+                    </span>
+                    {track.level === "ccie" && (
+                      <span className="rounded-pill bg-violet-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-violet-500 dark:text-violet-400">
+                        Lab exam
+                      </span>
+                    )}
+                    {track.level === "ccde" && (
+                      <span className="rounded-pill bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-amber-600 dark:text-amber-400">
+                        Practical exam
+                      </span>
+                    )}
+                  </span>
                 </SelectItem>
               ))}
             </SelectGroup>
