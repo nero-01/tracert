@@ -1,1 +1,452 @@
-[]
+[
+  {
+    "id": "ccie-ent-network-infrastructure-01",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Advanced OSPF: LSA types, virtual links, authentication, and filtering",
+    "sortOrder": 1,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-02",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Advanced BGP: communities, route maps, AS path, and soft reconfiguration",
+    "sortOrder": 2,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-03",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Advanced EIGRP: named mode, stub, leak maps, and authentication",
+    "sortOrder": 3,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-04",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Advanced STP: PortFast, BPDU Guard, Root Guard, and loop prevention",
+    "sortOrder": 4,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-05",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "IPv6 transition: 6to4, ISATAP, NAT64, and dual-stack design",
+    "sortOrder": 5,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-06",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Multicast advanced: PIM SSM, MSDP, and Anycast RP",
+    "sortOrder": 6,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-07",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Configure multi-area OSPF with route redistribution and filtering",
+    "sortOrder": 7,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-08",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Configure eBGP/iBGP with route reflectors and full mesh",
+    "sortOrder": 8,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-09",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Troubleshoot EtherChannel mismatches and load-balancing issues",
+    "sortOrder": 9,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-10",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Deploy IPv6 routing across a multi-router lab topology",
+    "sortOrder": 10,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-11",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Troubleshoot STP convergence from a defined failure scenario",
+    "sortOrder": 11,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-network-infrastructure-12",
+    "trackId": "ccie-enterprise",
+    "domain": "Network Infrastructure",
+    "domainWeight": 26,
+    "subdomain": "Routing",
+    "title": "Configure end-to-end multicast routing in a lab topology",
+    "sortOrder": 12,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-software-defined-infrastructure-13",
+    "trackId": "ccie-enterprise",
+    "domain": "Software Defined Infrastructure",
+    "domainWeight": 23,
+    "subdomain": "Fabric",
+    "title": "SD-Access: border nodes, edge nodes, and fabric control plane",
+    "sortOrder": 13,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-software-defined-infrastructure-14",
+    "trackId": "ccie-enterprise",
+    "domain": "Software Defined Infrastructure",
+    "domainWeight": 23,
+    "subdomain": "Fabric",
+    "title": "LISP operation: EID, RLOC, map server, and map resolver",
+    "sortOrder": 14,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-software-defined-infrastructure-15",
+    "trackId": "ccie-enterprise",
+    "domain": "Software Defined Infrastructure",
+    "domainWeight": 23,
+    "subdomain": "Fabric",
+    "title": "VXLAN: encapsulation, BGP EVPN, and flood-and-learn comparison",
+    "sortOrder": 15,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-software-defined-infrastructure-16",
+    "trackId": "ccie-enterprise",
+    "domain": "Software Defined Infrastructure",
+    "domainWeight": 23,
+    "subdomain": "Fabric",
+    "title": "SD-WAN: vManage policies, vSmart, and application-aware routing",
+    "sortOrder": 16,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-software-defined-infrastructure-17",
+    "trackId": "ccie-enterprise",
+    "domain": "Software Defined Infrastructure",
+    "domainWeight": 23,
+    "subdomain": "Fabric",
+    "title": "Cisco DNA Center: design, policy, provision, and template editor",
+    "sortOrder": 17,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-software-defined-infrastructure-18",
+    "trackId": "ccie-enterprise",
+    "domain": "Software Defined Infrastructure",
+    "domainWeight": 23,
+    "subdomain": "Fabric",
+    "title": "Deploy SD-Access fabric across multiple sites in lab",
+    "sortOrder": 18,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-software-defined-infrastructure-19",
+    "trackId": "ccie-enterprise",
+    "domain": "Software Defined Infrastructure",
+    "domainWeight": 23,
+    "subdomain": "Fabric",
+    "title": "Configure SD-WAN policies and verify traffic steering",
+    "sortOrder": 19,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-software-defined-infrastructure-20",
+    "trackId": "ccie-enterprise",
+    "domain": "Software Defined Infrastructure",
+    "domainWeight": 23,
+    "subdomain": "Fabric",
+    "title": "Troubleshoot LISP/VXLAN reachability in a fabric lab",
+    "sortOrder": 20,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-21",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "MPLS: LDP, label assignment, PHP, and label stack operation",
+    "sortOrder": 21,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-22",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "MPLS L3VPN: VRF, RD, RT, MP-BGP, and PE-CE routing",
+    "sortOrder": 22,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-23",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "DMVPN Phase 1/2/3 with NHRP and IPsec integration",
+    "sortOrder": 23,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-24",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "FlexVPN: IKEv2 hub-and-spoke and spoke-to-spoke tunnels",
+    "sortOrder": 24,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-25",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "End-to-end QoS: trust boundaries, queuing, shaping, and NBAR",
+    "sortOrder": 25,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-26",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "IPv6 over MPLS: 6PE and 6VPE architectures",
+    "sortOrder": 26,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-27",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "Build MPLS L3VPN with PE-CE OSPF and BGP redistribution",
+    "sortOrder": 27,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-28",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "Configure DMVPN Phase 3 with IPsec and OSPF overlay",
+    "sortOrder": 28,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-29",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "Implement QoS end-to-end across a multi-hop topology",
+    "sortOrder": 29,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-transport-technologies-and-solutions-30",
+    "trackId": "ccie-enterprise",
+    "domain": "Transport Technologies and Solutions",
+    "domainWeight": 23,
+    "subdomain": "WAN",
+    "title": "Troubleshoot MPLS forwarding from a broken configuration",
+    "sortOrder": 30,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-infrastructure-security-and-services-31",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Security and Services",
+    "domainWeight": 17,
+    "subdomain": "Security",
+    "title": "Advanced AAA: TACACS+ per-command authorisation",
+    "sortOrder": 31,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-infrastructure-security-and-services-32",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Security and Services",
+    "domainWeight": 17,
+    "subdomain": "Security",
+    "title": "Zone-based firewall: zones, class maps, and policy maps",
+    "sortOrder": 32,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-infrastructure-security-and-services-33",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Security and Services",
+    "domainWeight": 17,
+    "subdomain": "Security",
+    "title": "CoPP: protecting the control plane from floods and reconnaissance",
+    "sortOrder": 33,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-infrastructure-security-and-services-34",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Security and Services",
+    "domainWeight": 17,
+    "subdomain": "Security",
+    "title": "Advanced 802.1X: multi-auth, MAB, guest VLAN, critical VLAN",
+    "sortOrder": 34,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-infrastructure-security-and-services-35",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Security and Services",
+    "domainWeight": 17,
+    "subdomain": "Security",
+    "title": "PKI: CA, enrolment, trustpoints, and certificate lifecycle",
+    "sortOrder": 35,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-infrastructure-security-and-services-36",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Security and Services",
+    "domainWeight": 17,
+    "subdomain": "Security",
+    "title": "Advanced NAT: policy NAT, PAT, and NAT virtualisation",
+    "sortOrder": 36,
+    "component": "both"
+  },
+  {
+    "id": "ccie-ent-infrastructure-security-and-services-37",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Security and Services",
+    "domainWeight": 17,
+    "subdomain": "Security",
+    "title": "Configure and verify ZBF on a perimeter router",
+    "sortOrder": 37,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-infrastructure-security-and-services-38",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Security and Services",
+    "domainWeight": 17,
+    "subdomain": "Security",
+    "title": "Implement 802.1X multi-auth with MAB fallback",
+    "sortOrder": 38,
+    "component": "lab"
+  },
+  {
+    "id": "ccie-ent-infrastructure-automation-39",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Automation",
+    "domainWeight": 11,
+    "subdomain": "Automation",
+    "title": "Embedded Event Manager (EEM): applets and environment variables",
+    "sortOrder": 39,
+    "component": "written"
+  },
+  {
+    "id": "ccie-ent-infrastructure-automation-40",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Automation",
+    "domainWeight": 11,
+    "subdomain": "Automation",
+    "title": "Python on-box Guest Shell vs off-box automation",
+    "sortOrder": 40,
+    "component": "written"
+  },
+  {
+    "id": "ccie-ent-infrastructure-automation-41",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Automation",
+    "domainWeight": 11,
+    "subdomain": "Automation",
+    "title": "NETCONF/RESTCONF: config, operational data, and RPCs",
+    "sortOrder": 41,
+    "component": "written"
+  },
+  {
+    "id": "ccie-ent-infrastructure-automation-42",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Automation",
+    "domainWeight": 11,
+    "subdomain": "Automation",
+    "title": "YANG models: OpenConfig vs Cisco native models",
+    "sortOrder": 42,
+    "component": "written"
+  },
+  {
+    "id": "ccie-ent-infrastructure-automation-43",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Automation",
+    "domainWeight": 11,
+    "subdomain": "Automation",
+    "title": "Ansible network modules for IOS-XE platforms",
+    "sortOrder": 43,
+    "component": "written"
+  },
+  {
+    "id": "ccie-ent-infrastructure-automation-44",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Automation",
+    "domainWeight": 11,
+    "subdomain": "Automation",
+    "title": "DNA Center automation APIs: onboarding and templates",
+    "sortOrder": 44,
+    "component": "written"
+  },
+  {
+    "id": "ccie-ent-infrastructure-automation-45",
+    "trackId": "ccie-enterprise",
+    "domain": "Infrastructure Automation",
+    "domainWeight": 11,
+    "subdomain": "Automation",
+    "title": "Model-driven telemetry: gRPC dial-in vs dial-out subscriptions",
+    "sortOrder": 45,
+    "component": "written"
+  }
+]

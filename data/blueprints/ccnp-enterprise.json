@@ -1,1 +1,407 @@
-[]
+[
+  {
+    "id": "ccnp-ent-architecture-01",
+    "trackId": "ccnp-enterprise",
+    "domain": "Architecture",
+    "domainWeight": 15,
+    "subdomain": "Design",
+    "title": "Enterprise network design: two-tier, three-tier, and spine-leaf models",
+    "sortOrder": 1
+  },
+  {
+    "id": "ccnp-ent-architecture-02",
+    "trackId": "ccnp-enterprise",
+    "domain": "Architecture",
+    "domainWeight": 15,
+    "subdomain": "Design",
+    "title": "High availability: redundancy, HSRP, VRRP, and GLBP configuration and failover",
+    "sortOrder": 2
+  },
+  {
+    "id": "ccnp-ent-architecture-03",
+    "trackId": "ccnp-enterprise",
+    "domain": "Architecture",
+    "domainWeight": 15,
+    "subdomain": "Design",
+    "title": "Wireless network design principles for enterprise deployments",
+    "sortOrder": 3
+  },
+  {
+    "id": "ccnp-ent-architecture-04",
+    "trackId": "ccnp-enterprise",
+    "domain": "Architecture",
+    "domainWeight": 15,
+    "subdomain": "Design",
+    "title": "SD-WAN architecture: vEdge, vSmart, vBond, and vManage roles",
+    "sortOrder": 4
+  },
+  {
+    "id": "ccnp-ent-architecture-05",
+    "trackId": "ccnp-enterprise",
+    "domain": "Architecture",
+    "domainWeight": 15,
+    "subdomain": "Design",
+    "title": "SD-Access fabric: control plane, data plane, and policy plane",
+    "sortOrder": 5
+  },
+  {
+    "id": "ccnp-ent-architecture-06",
+    "trackId": "ccnp-enterprise",
+    "domain": "Architecture",
+    "domainWeight": 15,
+    "subdomain": "Design",
+    "title": "QoS policy models: DiffServ, IntServ, and marking at trust boundaries",
+    "sortOrder": 6
+  },
+  {
+    "id": "ccnp-ent-architecture-07",
+    "trackId": "ccnp-enterprise",
+    "domain": "Architecture",
+    "domainWeight": 15,
+    "subdomain": "Design",
+    "title": "Cisco DNA Center: intent-based networking and assurance overview",
+    "sortOrder": 7
+  },
+  {
+    "id": "ccnp-ent-virtualization-01",
+    "trackId": "ccnp-enterprise",
+    "domain": "Virtualization",
+    "domainWeight": 10,
+    "subdomain": "Overlay",
+    "title": "Device virtualisation: hypervisors, VMs, and containers for networking",
+    "sortOrder": 8
+  },
+  {
+    "id": "ccnp-ent-virtualization-02",
+    "trackId": "ccnp-enterprise",
+    "domain": "Virtualization",
+    "domainWeight": 10,
+    "subdomain": "Overlay",
+    "title": "Virtual switching with VRF, GRE tunnels, and IPsec overlays",
+    "sortOrder": 9
+  },
+  {
+    "id": "ccnp-ent-virtualization-03",
+    "trackId": "ccnp-enterprise",
+    "domain": "Virtualization",
+    "domainWeight": 10,
+    "subdomain": "Overlay",
+    "title": "Network functions virtualisation (NFV) concepts and use cases",
+    "sortOrder": 10
+  },
+  {
+    "id": "ccnp-ent-virtualization-04",
+    "trackId": "ccnp-enterprise",
+    "domain": "Virtualization",
+    "domainWeight": 10,
+    "subdomain": "Overlay",
+    "title": "LISP fundamentals: EID, RLOC, map server, and map resolver",
+    "sortOrder": 11
+  },
+  {
+    "id": "ccnp-ent-virtualization-05",
+    "trackId": "ccnp-enterprise",
+    "domain": "Virtualization",
+    "domainWeight": 10,
+    "subdomain": "Overlay",
+    "title": "VXLAN encapsulation: flood-and-learn vs BGP EVPN control plane",
+    "sortOrder": 12
+  },
+  {
+    "id": "ccnp-ent-virtualization-06",
+    "trackId": "ccnp-enterprise",
+    "domain": "Virtualization",
+    "domainWeight": 10,
+    "subdomain": "Overlay",
+    "title": "Cisco Enterprise NFV infrastructure components",
+    "sortOrder": 13
+  },
+  {
+    "id": "ccnp-ent-infrastructure-01",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "VLANs, 802.1Q trunking, and inter-VLAN routing design",
+    "sortOrder": 14
+  },
+  {
+    "id": "ccnp-ent-infrastructure-02",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "STP variants: RSTP, MST — root bridge, port roles, and convergence",
+    "sortOrder": 15
+  },
+  {
+    "id": "ccnp-ent-infrastructure-03",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "EtherChannel: LACP, PAgP, and load-balancing hash algorithms",
+    "sortOrder": 16
+  },
+  {
+    "id": "ccnp-ent-infrastructure-04",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "OSPFv2 and OSPFv3: areas, LSAs, and path selection",
+    "sortOrder": 17
+  },
+  {
+    "id": "ccnp-ent-infrastructure-05",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "EIGRP: metrics, feasible successor, and named mode configuration",
+    "sortOrder": 18
+  },
+  {
+    "id": "ccnp-ent-infrastructure-06",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "BGP: iBGP, eBGP, path attributes, and best-path selection",
+    "sortOrder": 19
+  },
+  {
+    "id": "ccnp-ent-infrastructure-07",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "Multicast: PIM sparse/dense mode, IGMP, and RP election",
+    "sortOrder": 20
+  },
+  {
+    "id": "ccnp-ent-infrastructure-08",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "IPv6 addressing, EUI-64, DHCPv6, and IPv6 routing protocols",
+    "sortOrder": 21
+  },
+  {
+    "id": "ccnp-ent-infrastructure-09",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "Wireless: 802.11 standards, WLC architecture, roaming, and FlexConnect",
+    "sortOrder": 22
+  },
+  {
+    "id": "ccnp-ent-infrastructure-10",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "Wireless security: WPA2, WPA3, and enterprise 802.1X integration",
+    "sortOrder": 23
+  },
+  {
+    "id": "ccnp-ent-infrastructure-11",
+    "trackId": "ccnp-enterprise",
+    "domain": "Infrastructure",
+    "domainWeight": 30,
+    "subdomain": "Routing",
+    "title": "QoS implementation: classification, marking, queuing, policing, and WRED",
+    "sortOrder": 24
+  },
+  {
+    "id": "ccnp-ent-network-assurance-01",
+    "trackId": "ccnp-enterprise",
+    "domain": "Network Assurance",
+    "domainWeight": 10,
+    "subdomain": "Operations",
+    "title": "Structured troubleshooting methodology for enterprise networks",
+    "sortOrder": 25
+  },
+  {
+    "id": "ccnp-ent-network-assurance-02",
+    "trackId": "ccnp-enterprise",
+    "domain": "Network Assurance",
+    "domainWeight": 10,
+    "subdomain": "Operations",
+    "title": "SNMP v2c/v3, syslog, and NetFlow/IPFIX for visibility",
+    "sortOrder": 26
+  },
+  {
+    "id": "ccnp-ent-network-assurance-03",
+    "trackId": "ccnp-enterprise",
+    "domain": "Network Assurance",
+    "domainWeight": 10,
+    "subdomain": "Operations",
+    "title": "IP SLA probes: configuration and reactive routing use cases",
+    "sortOrder": 27
+  },
+  {
+    "id": "ccnp-ent-network-assurance-04",
+    "trackId": "ccnp-enterprise",
+    "domain": "Network Assurance",
+    "domainWeight": 10,
+    "subdomain": "Operations",
+    "title": "Cisco DNA Center assurance: health scores and issue detection",
+    "sortOrder": 28
+  },
+  {
+    "id": "ccnp-ent-network-assurance-05",
+    "trackId": "ccnp-enterprise",
+    "domain": "Network Assurance",
+    "domainWeight": 10,
+    "subdomain": "Operations",
+    "title": "SPAN, RSPAN, and ERSPAN for packet capture and analysis",
+    "sortOrder": 29
+  },
+  {
+    "id": "ccnp-ent-network-assurance-06",
+    "trackId": "ccnp-enterprise",
+    "domain": "Network Assurance",
+    "domainWeight": 10,
+    "subdomain": "Operations",
+    "title": "Diagnostic show commands and debug strategies for routing protocols",
+    "sortOrder": 30
+  },
+  {
+    "id": "ccnp-ent-security-01",
+    "trackId": "ccnp-enterprise",
+    "domain": "Security",
+    "domainWeight": 20,
+    "subdomain": "Access",
+    "title": "Device hardening with AAA, TACACS+, and RADIUS",
+    "sortOrder": 31
+  },
+  {
+    "id": "ccnp-ent-security-02",
+    "trackId": "ccnp-enterprise",
+    "domain": "Security",
+    "domainWeight": 20,
+    "subdomain": "Access",
+    "title": "802.1X and port-based network access control",
+    "sortOrder": 32
+  },
+  {
+    "id": "ccnp-ent-security-03",
+    "trackId": "ccnp-enterprise",
+    "domain": "Security",
+    "domainWeight": 20,
+    "subdomain": "Access",
+    "title": "ACLs: standard, extended, named, and time-based policies",
+    "sortOrder": 33
+  },
+  {
+    "id": "ccnp-ent-security-04",
+    "trackId": "ccnp-enterprise",
+    "domain": "Security",
+    "domainWeight": 20,
+    "subdomain": "Access",
+    "title": "Secure management: SSH, SNMPv3, and HTTPS best practices",
+    "sortOrder": 34
+  },
+  {
+    "id": "ccnp-ent-security-05",
+    "trackId": "ccnp-enterprise",
+    "domain": "Security",
+    "domainWeight": 20,
+    "subdomain": "Access",
+    "title": "Network security zones: firewalls, IPS, and segmentation design",
+    "sortOrder": 35
+  },
+  {
+    "id": "ccnp-ent-security-06",
+    "trackId": "ccnp-enterprise",
+    "domain": "Security",
+    "domainWeight": 20,
+    "subdomain": "Access",
+    "title": "Wireless security: WPA2 Enterprise and EAP methods",
+    "sortOrder": 36
+  },
+  {
+    "id": "ccnp-ent-security-07",
+    "trackId": "ccnp-enterprise",
+    "domain": "Security",
+    "domainWeight": 20,
+    "subdomain": "Access",
+    "title": "TrustSec and MACsec concepts for campus fabrics",
+    "sortOrder": 37
+  },
+  {
+    "id": "ccnp-ent-security-08",
+    "trackId": "ccnp-enterprise",
+    "domain": "Security",
+    "domainWeight": 20,
+    "subdomain": "Access",
+    "title": "Control Plane Policing (CoPP) to protect the routing processor",
+    "sortOrder": 38
+  },
+  {
+    "id": "ccnp-ent-automation-01",
+    "trackId": "ccnp-enterprise",
+    "domain": "Automation",
+    "domainWeight": 15,
+    "subdomain": "Programmability",
+    "title": "Python essentials for network automation scripts",
+    "sortOrder": 39
+  },
+  {
+    "id": "ccnp-ent-automation-02",
+    "trackId": "ccnp-enterprise",
+    "domain": "Automation",
+    "domainWeight": 15,
+    "subdomain": "Programmability",
+    "title": "REST APIs: verbs, authentication, and JSON parsing patterns",
+    "sortOrder": 40
+  },
+  {
+    "id": "ccnp-ent-automation-03",
+    "trackId": "ccnp-enterprise",
+    "domain": "Automation",
+    "domainWeight": 15,
+    "subdomain": "Programmability",
+    "title": "Ansible for networks: inventory, playbooks, and IOS modules",
+    "sortOrder": 41
+  },
+  {
+    "id": "ccnp-ent-automation-04",
+    "trackId": "ccnp-enterprise",
+    "domain": "Automation",
+    "domainWeight": 15,
+    "subdomain": "Programmability",
+    "title": "Cisco DNA Center APIs and workflow automation",
+    "sortOrder": 42
+  },
+  {
+    "id": "ccnp-ent-automation-05",
+    "trackId": "ccnp-enterprise",
+    "domain": "Automation",
+    "domainWeight": 15,
+    "subdomain": "Programmability",
+    "title": "Puppet and Chef concepts for configuration management",
+    "sortOrder": 43
+  },
+  {
+    "id": "ccnp-ent-automation-06",
+    "trackId": "ccnp-enterprise",
+    "domain": "Automation",
+    "domainWeight": 15,
+    "subdomain": "Programmability",
+    "title": "Git fundamentals for network engineers and CI/CD basics",
+    "sortOrder": 44
+  },
+  {
+    "id": "ccnp-ent-automation-07",
+    "trackId": "ccnp-enterprise",
+    "domain": "Automation",
+    "domainWeight": 15,
+    "subdomain": "Programmability",
+    "title": "YANG models, NETCONF, and RESTCONF operational workflows",
+    "sortOrder": 45
+  }
+]
